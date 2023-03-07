@@ -1,3 +1,5 @@
+package br.com.qa.utils.reports;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,8 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import static br.com.qautils.managedriver.DriverFactory.*;
 
 
 public class EvidenceReport {
@@ -46,7 +50,7 @@ public class EvidenceReport {
     }
 
     public static byte[] capture() {
-        TakesScreenshot newScreen = (TakesScreenshot) DriverFactory.getDriver();
+        TakesScreenshot newScreen = (TakesScreenshot) getDriver();
         return newScreen.getScreenshotAs(OutputType.BYTES);
 
 
@@ -60,7 +64,7 @@ public class EvidenceReport {
         fileReport = rootsPath + "/" + nomeTest + ".html";
 
         try {
-            imagem = capture(DriverFactory.getDriver());
+            imagem = capture(getDriver());
 
             if (novoCenario) {
                 passo = 1;
@@ -110,7 +114,7 @@ public class EvidenceReport {
                 writer.println("<tr class='evidencia'>");
                 writer.println("<td class='evidencia' colspan=4 ><b><center>AMBIENTE</center></b></td></tr><tr>");
                 writer.println("<tr class='evidencia'>");
-                writer.println("<td class='evidencia' colspan=3  > BROWSER: </td><td class='evidencia' style='width:470px' >" + DriverFactory.setBrowser() + "</td></tr><tr>");
+                writer.println("<td class='evidencia' colspan=3  > BROWSER: </td><td class='evidencia' style='width:470px' >" + setBrowser() + "</td></tr><tr>");
                 writer.println("<tr class='evidencia'>");
                 writer.println("<td class='evidencia' colspan=3 > SISTEMA OPERACIONAL: </td><td class='evidencia' >" + System.getProperty("os.name") + "</td></tr><tr>");
                 writer.println("<tr class='evidencia'>");
@@ -231,7 +235,7 @@ public class EvidenceReport {
 
         status = "PASSED";
         passo++;
-        DriverFactory.log.info("[Passo evidenciado: " + acao + "] ");
+        log.info("[Passo evidenciado: " + acao + "] ");
     }
 
 
