@@ -21,7 +21,7 @@
 
     <distributionManagement>
         <repository>
-            <id>custom-web-report.write</id>
+            <id>custom-web-report.read</id>
             <name>GitHub RodrigoQA Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/RodrigoQA/custom-web-report</url>
         </repository>
